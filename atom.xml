@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>呆呆硕💤</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2018-09-05T13:13:57.624Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>呆呆硕💤</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第一篇文章</title>
+    <link href="http://yoursite.com/2018/09/05/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/"/>
+    <id>http://yoursite.com/2018/09/05/第一篇文章/</id>
+    <published>2018-09-05T11:06:04.000Z</published>
+    <updated>2018-09-05T13:13:57.624Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h2><p>一年半多的工作时间里，零零碎碎的看了不少的技术相关的知识，不过由于某些不可抗拒的因素（懒！），还有一些客观原因（游戏太他妈好玩了），没有做到一个很好的积累。今天翻同性恋交友社区（github）时候看到一篇文章<a href="https://github.com/benjycui/benjycui.github.io/blob/master/posts/2015-9-10-great-habits-of-programmer.md#reorganize-what-you-had-learned" target="_blank" rel="noopener">Great Habits of Programmer</a>，虽然老夫英语大概只有三级的水平，不过凭借着超强的翻译插件差不多也了解了一下文章的大体意思。立个 FLAG 从今天起不定期更新，记录所学所见 顺便联系一下MarkDown的写法（妈的这个不定期我用的太机智了）。没准这也可能是最后一篇 毕竟我很懒。。。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;简单介绍&quot;&gt;&lt;a href=&quot;#简单介绍&quot; class=&quot;headerlink&quot; title=&quot;简单介绍&quot;&gt;&lt;/a&gt;简单介绍&lt;/h2&gt;&lt;p&gt;一年半多的工作时间里，零零碎碎的看了不少的技术相关的知识，不过由于某些不可抗拒的因素（懒！），还有一些客观原因（游戏太他妈好
+      
+    
+    </summary>
+    
+    
+      <category term="flag" scheme="http://yoursite.com/tags/flag/"/>
+    
+  </entry>
+  
+</feed>
