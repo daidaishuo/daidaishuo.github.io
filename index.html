@@ -79,16 +79,16 @@
 
 
 
-<meta name="description" content="呆呆硕的个人主页，前端技术随笔整理，偶尔可能会玄学吹逼探讨人生">
+<meta name="description" content="呆呆硕的个人主页，二手前端技术搬运工，偶尔可能会玄学吹逼探讨人生">
 <meta property="og:type" content="website">
 <meta property="og:title" content="呆呆硕💤">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="呆呆硕💤">
-<meta property="og:description" content="呆呆硕的个人主页，前端技术随笔整理，偶尔可能会玄学吹逼探讨人生">
+<meta property="og:description" content="呆呆硕的个人主页，二手前端技术搬运工，偶尔可能会玄学吹逼探讨人生">
 <meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="呆呆硕💤">
-<meta name="twitter:description" content="呆呆硕的个人主页，前端技术随笔整理，偶尔可能会玄学吹逼探讨人生">
+<meta name="twitter:description" content="呆呆硕的个人主页，二手前端技术搬运工，偶尔可能会玄学吹逼探讨人生">
 
 
 
@@ -313,7 +313,8 @@
       
         
           
-            <h3 id="React中setState同步异步问题"><a href="#React中setState同步异步问题" class="headerlink" title="React中setState同步异步问题"></a>React中setState同步异步问题</h3><p>有一个需求，需要在在onClick里累加两次，如下</p>
+            <h4 id="整理资料原文链接"><a href="#整理资料原文链接" class="headerlink" title="整理资料原文链接"></a>整理资料原文链接</h4><p><a href="https://segmentfault.com/a/1190000014131698" target="_blank" rel="noopener">React中setState真的是异步的吗</a><br><a href="https://zhuanlan.zhihu.com/p/25882602" target="_blank" rel="noopener">RReact源码分析4 — setState机制</a><br><a href="http://imweb.io/topic/5b189d04d4c96b9b1b4c4ed6" target="_blank" rel="noopener">揭密React setState</a></p>
+<h3 id="React中setState同步异步问题"><a href="#React中setState同步异步问题" class="headerlink" title="React中setState同步异步问题"></a>React中setState同步异步问题</h3><p>有一个需求，需要在在onClick里累加两次，如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">onClick = () =&gt; &#123;</span><br><span class="line">  this.setState(&#123; index: this.state.index + 1 &#125;);</span><br><span class="line">  this.setState(&#123; index: this.state.index + 1 &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class Hello extends Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state = &#123; counter: 0 &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return &lt;div onClick=&#123;this.onClick.bind(this)&#125;&gt;点我&lt;/div&gt;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    //手动绑定mousedown事件</span><br><span class="line">    ReactDom.findDOMNode(this).addEventListener(</span><br><span class="line">      &quot;mousedown&quot;,</span><br><span class="line">      this.onClick.bind(this)</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    //延时调用onclick事件</span><br><span class="line">    setTimeout(this.onClick.bind(this), 1000);</span><br><span class="line">  &#125;</span><br><span class="line">  onClick(event) &#123;</span><br><span class="line">    if (event) &#123;</span><br><span class="line">      console.log(event.type);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      console.log(&quot;timeout&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(&quot;prev state:&quot;, this.state.counter);</span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      counter: this.state.counter + 1</span><br><span class="line">    &#125;);</span><br><span class="line">    console.log(&quot;next state:&quot;, this.state.counter);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">export default Hello;</span><br></pre></td></tr></table></figure>
 <p>在这个组件中采用3中方法更新state</p>
@@ -348,7 +349,6 @@
 <p>顺便提一下，在更新组建时，将更新的state合并到原state是在componentWillUpdate之后，render之前，所以在componentWillUpdate之前设置的setState可以在render中拿到最新值</p>
 <p>##总结<br>1.在组件生命周期中或者react事件绑定中，setState是通过异步更新的。<br>2.在延时的回调或者原生事件绑定的回调中调用setState不一定是异步的。</p>
 <p>这个结果并不说明setState异步执行的说法是错误的，更加准确的说法应该是setState不能保证同步执行</p>
-<h4 id="资料来源"><a href="#资料来源" class="headerlink" title="资料来源"></a>资料来源</h4><p><a href="https://segmentfault.com/a/1190000014131698" target="_blank" rel="noopener">React中setState真的是异步的吗</a><br><a href="https://zhuanlan.zhihu.com/p/25882602" target="_blank" rel="noopener">RReact源码分析4 — setState机制</a><br><a href="http://imweb.io/topic/5b189d04d4c96b9b1b4c4ed6" target="_blank" rel="noopener">揭密React setState</a></p>
 <!-- ![image](https://raw.githubusercontent.com/abcrun/abcrun.github.com/master/blog/chrome/images/chrome_full.png) -->
 <!-- [全面了解Nginx到底能做什么](https://juejin.im/post/5b8f963ce51d450e425e81b1?utm_source=gold_browser_extension) -->
 <!-- [全面了解Nginx到底能做什么](https://juejin.im/post/5b8f963ce51d450e425e81b1?utm_source=gold_browser_extension) -->
@@ -546,7 +546,7 @@
                 alt="呆呆硕💤" />
             
               <p class="site-author-name" itemprop="name">呆呆硕💤</p>
-              <p class="site-description motion-element" itemprop="description">呆呆硕的个人主页，前端技术随笔整理，偶尔可能会玄学吹逼探讨人生</p>
+              <p class="site-description motion-element" itemprop="description">呆呆硕的个人主页，二手前端技术搬运工，偶尔可能会玄学吹逼探讨人生</p>
           </div>
 
           <nav class="site-state motion-element">
