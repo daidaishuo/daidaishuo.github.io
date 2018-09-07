@@ -79,16 +79,19 @@
 
 
 
-<meta name="description" content="呆呆硕的个人主页，前端技术随笔整理，偶尔可能会玄学吹逼探讨人生">
-<meta property="og:type" content="website">
-<meta property="og:title" content="呆呆硕💤">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="React中setState同步异步问题有一个需求，需要在在onClick里累加两次，如下 1234onClick = () =&amp;gt; &amp;#123;  this.setState(&amp;#123; index: this.state.index + 1 &amp;#125;);  this.setState(&amp;#123; index: this.state.index + 1 &amp;#125;);&amp;#125;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react setState详解">
+<meta property="og:url" content="http://yoursite.com/2018/09/07/react setState详解/index.html">
 <meta property="og:site_name" content="呆呆硕💤">
-<meta property="og:description" content="呆呆硕的个人主页，前端技术随笔整理，偶尔可能会玄学吹逼探讨人生">
+<meta property="og:description" content="React中setState同步异步问题有一个需求，需要在在onClick里累加两次，如下 1234onClick = () =&amp;gt; &amp;#123;  this.setState(&amp;#123; index: this.state.index + 1 &amp;#125;);  this.setState(&amp;#123; index: this.state.index + 1 &amp;#125;);&amp;#125;">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/8/30/1658a8a62d6bb975?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:updated_time" content="2018-09-07T08:20:49.698Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="呆呆硕💤">
-<meta name="twitter:description" content="呆呆硕的个人主页，前端技术随笔整理，偶尔可能会玄学吹逼探讨人生">
+<meta name="twitter:title" content="react setState详解">
+<meta name="twitter:description" content="React中setState同步异步问题有一个需求，需要在在onClick里累加两次，如下 1234onClick = () =&amp;gt; &amp;#123;  this.setState(&amp;#123; index: this.state.index + 1 &amp;#125;);  this.setState(&amp;#123; index: this.state.index + 1 &amp;#125;);&amp;#125;">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/8/30/1658a8a62d6bb975?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
 
 
 
@@ -118,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/07/react setState详解/"/>
 
 
 
 
 
-  <title>呆呆硕💤</title>
+  <title>react setState详解 | 呆呆硕💤</title>
   
 
 
@@ -143,8 +146,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -227,9 +229,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -259,9 +261,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/07/react setState详解/" itemprop="url">react setState详解</a></h1>
+          <h1 class="post-title" itemprop="name headline">react setState详解</h1>
         
 
         <div class="post-meta">
@@ -293,6 +293,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
 
           
 
@@ -311,9 +316,7 @@
       
 
       
-        
-          
-            <h3 id="React中setState同步异步问题"><a href="#React中setState同步异步问题" class="headerlink" title="React中setState同步异步问题"></a>React中setState同步异步问题</h3><p>有一个需求，需要在在onClick里累加两次，如下</p>
+        <h3 id="React中setState同步异步问题"><a href="#React中setState同步异步问题" class="headerlink" title="React中setState同步异步问题"></a>React中setState同步异步问题</h3><p>有一个需求，需要在在onClick里累加两次，如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">onClick = () =&gt; &#123;</span><br><span class="line">  this.setState(&#123; index: this.state.index + 1 &#125;);</span><br><span class="line">  this.setState(&#123; index: this.state.index + 1 &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class Hello extends Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state = &#123; counter: 0 &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return &lt;div onClick=&#123;this.onClick.bind(this)&#125;&gt;点我&lt;/div&gt;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    //手动绑定mousedown事件</span><br><span class="line">    ReactDom.findDOMNode(this).addEventListener(</span><br><span class="line">      &quot;mousedown&quot;,</span><br><span class="line">      this.onClick.bind(this)</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    //延时调用onclick事件</span><br><span class="line">    setTimeout(this.onClick.bind(this), 1000);</span><br><span class="line">  &#125;</span><br><span class="line">  onClick(event) &#123;</span><br><span class="line">    if (event) &#123;</span><br><span class="line">      console.log(event.type);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      console.log(&quot;timeout&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(&quot;prev state:&quot;, this.state.counter);</span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      counter: this.state.counter + 1</span><br><span class="line">    &#125;);</span><br><span class="line">    console.log(&quot;next state:&quot;, this.state.counter);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">export default Hello;</span><br></pre></td></tr></table></figure>
 <p>在这个组件中采用3中方法更新state</p>
@@ -352,8 +355,6 @@
 <!-- ![image](https://raw.githubusercontent.com/abcrun/abcrun.github.com/master/blog/chrome/images/chrome_full.png) -->
 <!-- [全面了解Nginx到底能做什么](https://juejin.im/post/5b8f963ce51d450e425e81b1?utm_source=gold_browser_extension) -->
 <!-- [全面了解Nginx到底能做什么](https://juejin.im/post/5b8f963ce51d450e425e81b1?utm_source=gold_browser_extension) -->
-          
-        
       
     </div>
     
@@ -370,132 +371,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/05/第一篇文章/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="呆呆硕💤">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/ai3.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="呆呆硕💤">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/05/第一篇文章/" itemprop="url">第一篇文章</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-05T19:06:04+08:00">
-                2018-09-05
-              </time>
+              <a href="/2018/09/05/第一篇文章/" rel="next" title="第一篇文章">
+                <i class="fa fa-chevron-left"></i> 第一篇文章
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h2 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h2><p>一年半多的工作时间里，零零碎碎的看了不少的技术相关的知识，不过由于某些不可抗拒的因素（懒！），还有一些客观原因（游戏太他妈好玩了），没有做到一个很好的积累。今天翻同性恋交友社区（github）时候看到一篇文章<a href="https://github.com/benjycui/benjycui.github.io/blob/master/posts/2015-9-10-great-habits-of-programmer.md#reorganize-what-you-had-learned" target="_blank" rel="noopener">Great Habits of Programmer</a>，虽然老夫英语大概只有三级的水平，不过凭借着超强的翻译插件差不多也了解了一下文章的大体意思。立个 FLAG 从今天起不定期更新，记录所学所见 顺便联系一下MarkDown的写法（妈的这个不定期我用的太机智了）。没准这也可能是最后一篇 毕竟我很懒。。。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -505,10 +402,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -516,6 +414,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -536,8 +438,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -608,6 +519,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#React中setState同步异步问题"><span class="nav-number">1.</span> <span class="nav-text">React中setState同步异步问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一个简单的流程图"><span class="nav-number">1.1.</span> <span class="nav-text">一个简单的流程图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#setState异步的实现"><span class="nav-number">1.2.</span> <span class="nav-text">setState异步的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#事件中的调用setState"><span class="nav-number">1.2.1.</span> <span class="nav-text">事件中的调用setState</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#原生事件绑定和setTimeout中setState"><span class="nav-number">1.2.2.</span> <span class="nav-text">原生事件绑定和setTimeout中setState</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#资料来源"><span class="nav-number">1.3.</span> <span class="nav-text">资料来源</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -777,6 +704,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
